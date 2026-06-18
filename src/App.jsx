@@ -1,5 +1,6 @@
 import React from 'react';
 import Header from './components/Header';
+import SummaryCard from './components/SummaryCard';
 
 const App = () => {
   return (
@@ -13,7 +14,7 @@ const App = () => {
         <div className="lg:col-span-8">
 
           <div className="border border-zinc-800 rounded-xl p-6">
-            Main Content Area
+            <SummaryCard />
           </div>
 
         </div>
