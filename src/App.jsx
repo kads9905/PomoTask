@@ -2,6 +2,7 @@ import React from 'react';
 import Header from './components/Header';
 import SummaryCard from './components/SummaryCard';
 import TaskList from './components/TaskList';
+import AddTaskForm from './components/AddTaskForm';
 
 const App = () => {
 
@@ -33,11 +34,13 @@ const App = () => {
         {/* Left Side */}
         <div className="lg:col-span-8">
 
-          <div className="border border-zinc-800 rounded-xl p-6">
-            <SummaryCard />
-            <TaskList tasks={tasks} />
+          <SummaryCard />
+
+          <div className="mt-6">
+            <AddTaskForm />
           </div>
 
+          <TaskList tasks={tasks} />
 
         </div>
 
