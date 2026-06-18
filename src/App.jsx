@@ -1,8 +1,28 @@
 import React from 'react';
 import Header from './components/Header';
 import SummaryCard from './components/SummaryCard';
+import TaskList from './components/TaskList';
 
 const App = () => {
+
+  const tasks = [
+    {
+      id: 1,
+      title: "Learn React",
+      completed: false
+    },
+    {
+      id: 2,
+      title: "Build Pomotask",
+      completed: true
+    },
+    {
+      id: 3,
+      title: "Learn Tailwind",
+      completed: false
+    }
+  ];
+
   return (
     <div className="h-screen bg-black p-8">
 
@@ -15,7 +35,9 @@ const App = () => {
 
           <div className="border border-zinc-800 rounded-xl p-6">
             <SummaryCard />
+            <TaskList tasks={tasks} />
           </div>
+
 
         </div>
 
