@@ -3,10 +3,11 @@ import Header from './components/Header';
 import SummaryCard from './components/SummaryCard';
 import TaskList from './components/TaskList';
 import AddTaskForm from './components/AddTaskForm';
+import { useState } from 'react';
 
 const App = () => {
 
-  const tasks = [
+  const [tasks, setTasks] = useState([
     {
       id: 1,
       title: "Learn React",
@@ -22,7 +23,7 @@ const App = () => {
       title: "Learn Tailwind",
       completed: false
     }
-  ];
+  ]);
 
   return (
     <div className="h-screen bg-black p-8">
