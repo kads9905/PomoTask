@@ -1,7 +1,7 @@
 import React from 'react';
 import TaskItem from './TaskItem';
 
-const TaskList = ({ tasks }) => {
+const TaskList = ({ tasks, toggleTask }) => {
   return (
     <div className="mt-6">
 
@@ -9,6 +9,7 @@ const TaskList = ({ tasks }) => {
         <TaskItem
           key={task.id}
           task={task}
+          toggleTask={toggleTask}
         />
       ))}
 

@@ -32,6 +32,19 @@ const App = () => {
     ]);
   };
 
+  const toggleTask = (id) => {
+    setTasks((prevTasks) =>
+      prevTasks.map((task) =>
+        task.id === id
+          ? {
+              ...task,
+              completed: !task.completed
+            }
+          : task
+      )
+    );
+  };
+
   return (
     <div className="h-screen bg-black p-8">
 
@@ -48,7 +61,10 @@ const App = () => {
             <AddTaskForm addTask={addTask}/>
           </div>
 
-          <TaskList tasks={tasks} />
+          <TaskList 
+            tasks={tasks}
+            toggleTask={toggleTask}
+          />
 
         </div>
 
