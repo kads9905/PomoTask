@@ -1,7 +1,7 @@
 import React from 'react';
 import TaskItem from './TaskItem';
 
-const TaskList = ({ tasks, toggleTask }) => {
+const TaskList = ({ tasks, toggleTask, deleteTask }) => {
   return (
     <div className="mt-6">
 
@@ -10,6 +10,7 @@ const TaskList = ({ tasks, toggleTask }) => {
           key={task.id}
           task={task}
           toggleTask={toggleTask}
+          deleteTask={deleteTask}
         />
       ))}
 

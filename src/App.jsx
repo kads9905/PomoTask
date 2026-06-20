@@ -45,6 +45,12 @@ const App = () => {
     );
   };
 
+  const deleteTask = (id) => {
+    setTasks((prevTasks) =>
+      prevTasks.filter((task) => task.id !== id)
+    );
+  };
+
   return (
     <div className="h-screen bg-black p-8">
 
@@ -64,6 +70,7 @@ const App = () => {
           <TaskList 
             tasks={tasks}
             toggleTask={toggleTask}
+            deleteTask={deleteTask}
           />
 
         </div>
