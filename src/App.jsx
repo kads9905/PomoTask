@@ -5,6 +5,7 @@ import TaskList from './components/TaskList';
 import AddTaskForm from './components/AddTaskForm';
 import { useState } from 'react';
 import SearchBar from './components/SearchBar';
+import FilterBar from './components/FilterBar';
 
 const App = () => {
 
@@ -27,6 +28,7 @@ const App = () => {
   ]);
 
   const [searchTerm, setSearchTerm] = useState("");
+  const [filter, setFilter] = useState("all");
 
   const addTask = (newTask) => {
     setTasks((prevTasks) => [
@@ -59,7 +61,21 @@ const App = () => {
     (task) => task.completed
   ).length;
 
-  const filteredTasks = tasks.filter((task) =>
+  let filteredTasks = tasks;
+
+  if (filter === "pending") {
+    filteredTasks = tasks.filter(
+      (task) => !task.completed
+    );
+  }
+
+  if (filter === "completed") {
+    filteredTasks = tasks.filter(
+      (task) => task.completed
+    );
+  }
+
+  filteredTasks = filteredTasks.filter((task) =>
     task.title
       .toLowerCase()
       .includes(searchTerm.toLowerCase())
@@ -85,11 +101,18 @@ const App = () => {
             <AddTaskForm addTask={addTask}/>
           </div>
 
-          <div className="mt-6">
+          <div className="flex flex-col lg:flex-row gap-4 lg:justify-between lg:items-center mt-6 mb-6">
+
+            <FilterBar
+              filter={filter}
+              setFilter={setFilter}
+            />
+
             <SearchBar
               searchTerm={searchTerm}
               setSearchTerm={setSearchTerm}
             />
+
           </div>
 
           <TaskList 
