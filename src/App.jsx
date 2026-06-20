@@ -51,6 +51,11 @@ const App = () => {
     );
   };
 
+  const totalTasks = tasks.length;
+  const completedTasks = tasks.filter(
+    (task) => task.completed
+  ).length;
+
   return (
     <div className="h-screen bg-black p-8">
 
@@ -61,7 +66,10 @@ const App = () => {
         {/* Left Side */}
         <div className="lg:col-span-8">
 
-          <SummaryCard />
+          <SummaryCard 
+            completedTasks={completedTasks}
+            totalTasks={totalTasks}
+          />
 
           <div className="mt-6">
             <AddTaskForm addTask={addTask}/>
