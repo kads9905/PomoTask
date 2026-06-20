@@ -25,6 +25,13 @@ const App = () => {
     }
   ]);
 
+  const addTask = (newTask) => {
+    setTasks((prevTasks) => [
+      ...prevTasks,
+      newTask
+    ]);
+  };
+
   return (
     <div className="h-screen bg-black p-8">
 
@@ -38,7 +45,7 @@ const App = () => {
           <SummaryCard />
 
           <div className="mt-6">
-            <AddTaskForm />
+            <AddTaskForm addTask={addTask}/>
           </div>
 
           <TaskList tasks={tasks} />
