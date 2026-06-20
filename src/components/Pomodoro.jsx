@@ -4,6 +4,7 @@ const Pomodoro = () => {
     const [minutes, setMinutes] = useState(25);
     const [seconds, setSeconds] = useState(0);
     const [isRunning, setIsRunning] = useState(false);
+    const [mode, setMode] = useState("pomodoro");
 
     useEffect(() => {
         if (!isRunning) return;
@@ -58,16 +59,64 @@ const Pomodoro = () => {
         <button
             onClick={() => {
                 setIsRunning(false);
-                setMinutes(25);
+                if (mode === "pomodoro") {
+                    setMinutes(25);
+                } else if (mode === "short") {
+                    setMinutes(5);
+                } else {
+                    setMinutes(15);
+                }
                 setSeconds(0);
             }}
             className="bg-zinc-800 text-white px-6 py-3 rounded-xl"
         >
           Reset
         </button>
+        
 
       </div>
+        
 
+       <div className="flex justify-center gap-4 mt-10">
+
+            <button
+                onClick={() => {
+                setMode("pomodoro");
+                setMinutes(25);
+                setSeconds(0);
+                setIsRunning(false);
+                }}
+                className="bg-zinc-800 text-white px-6 py-3 rounded-xl"
+            >
+                Pomodoro
+            </button>
+
+            <button
+                onClick={() => {
+                setMode("short");
+                setMinutes(5);
+                setSeconds(0);
+                setIsRunning(false);
+                }}
+                className="bg-zinc-800 text-white px-6 py-3 rounded-xl"
+            >
+                Short Break
+            </button>
+
+            <button
+                onClick={() => {
+                setMode("long");
+                setMinutes(15);
+                setSeconds(0);
+                setIsRunning(false);
+                }}
+                className="bg-zinc-800 text-white px-6 py-3 rounded-xl"
+            >
+                Long Break
+            </button>
+
+        </div>
+        
     </div>
   );
 };
