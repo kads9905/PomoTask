@@ -4,6 +4,7 @@ import SummaryCard from './components/SummaryCard';
 import TaskList from './components/TaskList';
 import AddTaskForm from './components/AddTaskForm';
 import { useState } from 'react';
+import SearchBar from './components/SearchBar';
 
 const App = () => {
 
@@ -24,6 +25,8 @@ const App = () => {
       completed: false
     }
   ]);
+
+  const [searchTerm, setSearchTerm] = useState("");
 
   const addTask = (newTask) => {
     setTasks((prevTasks) => [
@@ -56,6 +59,13 @@ const App = () => {
     (task) => task.completed
   ).length;
 
+  const filteredTasks = tasks.filter((task) =>
+    task.title
+      .toLowerCase()
+      .includes(searchTerm.toLowerCase())
+  );
+
+
   return (
     <div className="h-screen bg-black p-8">
 
@@ -75,8 +85,15 @@ const App = () => {
             <AddTaskForm addTask={addTask}/>
           </div>
 
+          <div className="mt-6">
+            <SearchBar
+              searchTerm={searchTerm}
+              setSearchTerm={setSearchTerm}
+            />
+          </div>
+
           <TaskList 
-            tasks={tasks}
+            tasks={filteredTasks}
             toggleTask={toggleTask}
             deleteTask={deleteTask}
           />
