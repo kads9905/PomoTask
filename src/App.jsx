@@ -6,6 +6,7 @@ import AddTaskForm from './components/AddTaskForm';
 import { useState } from 'react';
 import SearchBar from './components/SearchBar';
 import FilterBar from './components/FilterBar';
+import Pomodoro from './components/Pomodoro';
 
 const App = () => {
 
@@ -126,9 +127,7 @@ const App = () => {
         {/* Right Side */}
         <div className="lg:col-span-4">
 
-          <div className="border border-zinc-800 rounded-xl p-6">
-            Sidebar Area
-          </div>
+          <Pomodoro />
 
         </div>
 
