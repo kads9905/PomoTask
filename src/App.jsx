@@ -120,6 +120,8 @@ const App = () => {
             tasks={filteredTasks}
             toggleTask={toggleTask}
             deleteTask={deleteTask}
+            filter={filter}
+            searchTerm={searchTerm}
           />
 
         </div>
