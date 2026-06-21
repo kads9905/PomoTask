@@ -1,8 +1,8 @@
 import React from 'react';
 import TaskItem from './TaskItem';
 
-const TaskList = ({ tasks, toggleTask, deleteTask, filter, searchTerm }) => {
-  
+const TaskList = ({ tasks, toggleTask, deleteTask, editTask, filter, searchTerm }) => {
+
   if (tasks.length === 0) {
     if (searchTerm.trim() !== "") {
       return (
@@ -75,6 +75,7 @@ const TaskList = ({ tasks, toggleTask, deleteTask, filter, searchTerm }) => {
           task={task}
           toggleTask={toggleTask}
           deleteTask={deleteTask}
+          editTask={editTask}
         />
       ))}
 

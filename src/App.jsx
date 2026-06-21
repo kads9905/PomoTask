@@ -57,6 +57,19 @@ const App = () => {
     );
   };
 
+  const editTask = (id, updatedTitle) => {
+    setTasks((prevTasks) =>
+      prevTasks.map((task) =>
+        task.id === id
+          ? {
+              ...task,
+              title: updatedTitle
+            }
+          : task
+      )
+    );
+  };
+
   const totalTasks = tasks.length;
   const completedTasks = tasks.filter(
     (task) => task.completed
@@ -120,6 +133,7 @@ const App = () => {
             tasks={filteredTasks}
             toggleTask={toggleTask}
             deleteTask={deleteTask}
+            editTask={editTask}
             filter={filter}
             searchTerm={searchTerm}
           />
