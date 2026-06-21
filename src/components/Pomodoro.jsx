@@ -5,6 +5,7 @@ const Pomodoro = () => {
     const [seconds, setSeconds] = useState(0);
     const [isRunning, setIsRunning] = useState(false);
     const [mode, setMode] = useState("pomodoro");
+    const [activeButton, setActiveButton] = useState("");
 
     useEffect(() => {
         if (!isRunning) return;
@@ -43,22 +44,37 @@ const Pomodoro = () => {
       <div className="flex justify-center gap-4 mt-10">
 
         <button
-            onClick={() => setIsRunning(true)}
-            className="bg-zinc-800 text-white px-6 py-3 rounded-xl"
+            onClick={() => {
+                setIsRunning(true);
+                setActiveButton("start");
+            }}
+            className={`px-6 py-3 rounded-xl ${
+                activeButton === "start"
+                    ? "bg-orange-500 text-black"
+                    : "bg-zinc-800 text-white"
+            }`}
         >
-          Start
-        </button>
-
-        <button
-            onClick={() => setIsRunning(false)}
-            className="bg-zinc-800 text-white px-6 py-3 rounded-xl"
-        >
-          Pause
+            Start
         </button>
 
         <button
             onClick={() => {
                 setIsRunning(false);
+                setActiveButton("pause");
+            }}
+            className={`px-6 py-3 rounded-xl ${
+                activeButton === "pause"
+                    ? "bg-orange-500 text-black"
+                    : "bg-zinc-800 text-white"
+            }`}
+        >
+            Pause
+        </button>
+
+        <button
+            onClick={() => {
+                setIsRunning(false);
+
                 if (mode === "pomodoro") {
                     setMinutes(25);
                 } else if (mode === "short") {
@@ -66,11 +82,17 @@ const Pomodoro = () => {
                 } else {
                     setMinutes(15);
                 }
+
                 setSeconds(0);
+                setActiveButton("reset");
             }}
-            className="bg-zinc-800 text-white px-6 py-3 rounded-xl"
+            className={`px-6 py-3 rounded-xl ${
+                activeButton === "reset"
+                    ? "bg-orange-500 text-black"
+                    : "bg-zinc-800 text-white"
+            }`}
         >
-          Reset
+            Reset
         </button>
         
 
@@ -98,7 +120,11 @@ const Pomodoro = () => {
                 setSeconds(0);
                 setIsRunning(false);
                 }}
-                className="bg-zinc-800 text-white px-6 py-3 rounded-xl"
+                className={`px-6 py-3 rounded-xl ${
+                    mode === "short"
+                        ? "bg-orange-500 text-black"
+                        : "bg-zinc-800 text-white"
+                }`}
             >
                 Short Break
             </button>
@@ -110,7 +136,11 @@ const Pomodoro = () => {
                 setSeconds(0);
                 setIsRunning(false);
                 }}
-                className="bg-zinc-800 text-white px-6 py-3 rounded-xl"
+                className={`px-6 py-3 rounded-xl ${
+                    mode === "long"
+                        ? "bg-orange-500 text-black"
+                        : "bg-zinc-800 text-white"
+                }`}
             >
                 Long Break
             </button>
