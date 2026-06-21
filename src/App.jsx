@@ -3,68 +3,129 @@ import Header from './components/Header';
 import SummaryCard from './components/SummaryCard';
 import TaskList from './components/TaskList';
 import AddTaskForm from './components/AddTaskForm';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import SearchBar from './components/SearchBar';
 import FilterBar from './components/FilterBar';
 import Pomodoro from './components/Pomodoro';
 
 const App = () => {
 
-  const [tasks, setTasks] = useState([
-    {
-      id: 1,
-      title: "Learn React",
-      completed: false
-    },
-    {
-      id: 2,
-      title: "Build Pomotask",
-      completed: true
-    },
-    {
-      id: 3,
-      title: "Learn Tailwind",
-      completed: false
-    }
-  ]);
+  const [tasks, setTasks] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   const [searchTerm, setSearchTerm] = useState("");
   const [filter, setFilter] = useState("all");
 
-  const addTask = (newTask) => {
+  useEffect(() => {
+    const fetchTasks = async () => {
+      try {
+        const response = await fetch(
+          "http://localhost:3001/tasks"
+        );
+        const data = await response.json();
+        setTasks(data);
+      } catch (err) {
+        setError(
+          "Failed to load tasks"
+        );
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchTasks();
+
+  }, []);
+
+  const addTask = async (newTask) => {
+    const response = await fetch(
+      "http://localhost:3001/tasks",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(newTask)
+      }
+    );
+
+    const savedTask =
+      await response.json();
+
     setTasks((prevTasks) => [
       ...prevTasks,
-      newTask
+      savedTask
     ]);
   };
 
-  const toggleTask = (id) => {
+  const toggleTask = async (id) => {
+    const task = tasks.find(
+      (task) => task.id === id
+    );
+    const response = await fetch(
+      `http://localhost:3001/tasks/${id}`,
+      {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          completed: !task.completed
+        })
+      }
+    );
+
+    const updatedTask =
+      await response.json();
+
     setTasks((prevTasks) =>
       prevTasks.map((task) =>
         task.id === id
-          ? {
-              ...task,
-              completed: !task.completed
-            }
+          ? updatedTask
           : task
       )
     );
   };
 
-  const deleteTask = (id) => {
+  const deleteTask = async (id) => {
+    await fetch(
+      `http://localhost:3001/tasks/${id}`,
+      {
+        method: "DELETE"
+      }
+    );
+
     setTasks((prevTasks) =>
-      prevTasks.filter((task) => task.id !== id)
+      prevTasks.filter(
+        (task) => task.id !== id
+      )
     );
   };
 
-  const editTask = (id, updatedData) => {
+  const editTask = async (
+    id,
+    updatedData
+  ) => {
+
+    const response = await fetch(
+      `http://localhost:3001/tasks/${id}`,
+      {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(updatedData)
+      }
+    );
+
+    const updatedTask =
+      await response.json();
+
     setTasks((prevTasks) =>
       prevTasks.map((task) =>
         task.id === id
-          ? {
-              ...task,
-              ...updatedData
-            }
+          ? updatedTask
           : task
       )
     );

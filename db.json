@@ -1,0 +1,19 @@
+{
+  "tasks": [
+    {
+      "id": "1",
+      "title": "Learn React",
+      "date": "2026-06-20",
+      "priority": "High",
+      "completed": false
+    },
+    {
+      "id": "2",
+      "title": "Build Pomotask",
+      "date": "2026-06-22",
+      "priority": "Medium",
+      "completed": true
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}
