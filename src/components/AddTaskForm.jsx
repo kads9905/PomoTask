@@ -58,7 +58,7 @@ const AddTaskForm = ({ addTask }) => {
 
         <button
           onClick={handleAddTask}
-          className="w-16 h-16 rounded-full bg-orange-500 text-black text-3xl font-bold flex items-center justify-center"
+          className="w-16 h-16 rounded-full bg-orange-500 text-black text-3xl font-bold flex items-center justify-center hover:scale-110 transition"
         >
           +
         </button>

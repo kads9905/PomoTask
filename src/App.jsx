@@ -57,13 +57,13 @@ const App = () => {
     );
   };
 
-  const editTask = (id, updatedTitle) => {
+  const editTask = (id, updatedData) => {
     setTasks((prevTasks) =>
       prevTasks.map((task) =>
         task.id === id
           ? {
               ...task,
-              title: updatedTitle
+              ...updatedData
             }
           : task
       )
