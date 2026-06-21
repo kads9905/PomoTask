@@ -8,6 +8,7 @@ const AddTaskForm = ({ addTask }) => {
 
   const handleAddTask = () => {
     if (title.trim() === "") {
+      alert("Please enter a task.");
       return;
     }
 
@@ -27,7 +28,7 @@ const AddTaskForm = ({ addTask }) => {
   };
 
   return (
-    <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-6">
+    <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-6 transition">
 
       <div className="flex flex-col lg:flex-row items-stretch lg:items-center gap-4">
 

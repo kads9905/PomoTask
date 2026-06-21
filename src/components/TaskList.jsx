@@ -1,10 +1,9 @@
 import React from 'react';
 import TaskItem from './TaskItem';
 
-const TaskList = ({ tasks, toggleTask, deleteTask, editTask, filter, searchTerm }) => {
-
-  if (tasks.length === 0) {
-    if (searchTerm.trim() !== "") {
+const TaskList = ({ tasks, toggleTask, editTask, deleteTask, filter, searchTerm }) => {
+  if(tasks.length === 0){
+    if(searchTerm.trim() !== ""){
       return (
         <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-10 text-center mt-8">
 
@@ -19,8 +18,7 @@ const TaskList = ({ tasks, toggleTask, deleteTask, editTask, filter, searchTerm 
         </div>
       );
     }
-
-    if (filter === "pending") {
+    if(filter === "pending"){
       return (
         <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-10 text-center mt-8">
 
@@ -36,7 +34,7 @@ const TaskList = ({ tasks, toggleTask, deleteTask, editTask, filter, searchTerm 
       );
     }
 
-    if (filter === "completed") {
+    if(filter === "completed"){
       return (
         <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-10 text-center mt-8">
 
@@ -54,7 +52,6 @@ const TaskList = ({ tasks, toggleTask, deleteTask, editTask, filter, searchTerm 
 
     return (
       <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-10 text-center mt-8">
-
         <h2 className="text-2xl font-bold text-white">
           No tasks yet
         </h2>
@@ -66,21 +63,27 @@ const TaskList = ({ tasks, toggleTask, deleteTask, editTask, filter, searchTerm 
       </div>
     );
   }
+
+
   return (
-    <div className="mt-6">
-
-      {tasks.map((task) => (
-        <TaskItem
-          key={task.id}
-          task={task}
-          toggleTask={toggleTask}
-          deleteTask={deleteTask}
-          editTask={editTask}
-        />
-      ))}
-
+    <div>
+        {tasks.map(task => (
+            <TaskItem 
+            key={task.id}
+            task={task}
+            toggleTask={toggleTask}
+            deleteTask={deleteTask}
+            editTask={editTask}
+            />
+        ))}
     </div>
-  );
-};
+  )
+}
 
-export default TaskList;
+export default TaskList
+
+// tasklist needs to know which filter is currently active
+// tasklist responsible for looping through tasks show title checkbox button
+// style card
+// with taskItem it receives tasks -> loops through tasks ->
+// and creates taskitem for each tasks

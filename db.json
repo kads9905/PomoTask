@@ -5,7 +5,7 @@
       "title": "Learn React",
       "date": "2026-06-20",
       "priority": "High",
-      "completed": false
+      "completed": true
     },
     {
       "id": "2",
@@ -13,6 +13,27 @@
       "date": "2026-06-22",
       "priority": "Medium",
       "completed": true
+    },
+    {
+      "id": "kxObBQssB3o",
+      "title": "gggg",
+      "date": "",
+      "priority": "Medium",
+      "completed": false
+    },
+    {
+      "id": "Zxdt1hg2OFs",
+      "title": "ggg",
+      "date": "",
+      "priority": "Medium",
+      "completed": false
+    },
+    {
+      "id": "aN019cXa4ds",
+      "title": "ggg",
+      "date": "",
+      "priority": "Medium",
+      "completed": false
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

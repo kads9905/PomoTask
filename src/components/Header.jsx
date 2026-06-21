@@ -1,8 +1,8 @@
-import React from 'react'
+import React from 'react';
 
-const Header = () => {
+const Header = ({ theme, setTheme }) => {
   return (
-     <header className="flex justify-between items-center mb-8">
+    <header className="flex justify-between items-center mb-8">
 
       <h1 className="text-4xl font-bold">
 
@@ -16,8 +16,20 @@ const Header = () => {
 
       </h1>
 
-    </header>
-  )
-}
+      <div className="flex items-center gap-6 text-2xl">
 
-export default Header
+        <button className="text-zinc-400 hover:text-white">
+          ☀️
+        </button>
+
+        <button className="text-zinc-400 hover:text-white">
+          🌙
+        </button>
+
+      </div>
+
+    </header>
+  );
+};
+
+export default Header;

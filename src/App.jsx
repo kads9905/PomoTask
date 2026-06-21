@@ -13,7 +13,6 @@ const App = () => {
   const [tasks, setTasks] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-
   const [searchTerm, setSearchTerm] = useState("");
   const [filter, setFilter] = useState("all");
 
@@ -156,16 +155,40 @@ const App = () => {
       .includes(searchTerm.toLowerCase())
   );
 
+  if (loading) {
+    return (
+      <h1 className="text-white text-center text-2xl mt-10">
+        Loading tasks...
+      </h1>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="text-center mt-10">
+
+        <h1 className="text-red-500 text-2xl font-bold">
+          Failed to load tasks
+        </h1>
+
+        <p className="text-zinc-400 mt-2">
+          {error}
+        </p>
+
+      </div>
+    );
+  }
+
 
   return (
-    <div className="h-screen bg-black p-8">
+    <div className="h-screen overflow-hidden bg-black p-8 transition-all">
 
       <Header />
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mt-8">
 
         {/* Left Side */}
-        <div className="lg:col-span-8">
+        <div className="lg:col-span-8 flex flex-col">
 
           <SummaryCard 
             completedTasks={completedTasks}
@@ -190,19 +213,27 @@ const App = () => {
 
           </div>
 
-          <TaskList 
-            tasks={filteredTasks}
-            toggleTask={toggleTask}
-            deleteTask={deleteTask}
-            editTask={editTask}
-            filter={filter}
-            searchTerm={searchTerm}
-          />
+          <div className="overflow-y-auto pr-2 h-[55vh] pt-2">
+
+            <div className="pb-20">
+
+              <TaskList 
+                tasks={filteredTasks}
+                toggleTask={toggleTask}
+                deleteTask={deleteTask}
+                editTask={editTask}
+                filter={filter}
+                searchTerm={searchTerm}
+              />
+
+            </div>
+
+          </div>
 
         </div>
 
         {/* Right Side */}
-        <div className="lg:col-span-4">
+        <div className="lg:col-span-4 h-[calc(100vh-120px)]">
 
           <Pomodoro />
 
