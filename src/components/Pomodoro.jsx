@@ -6,6 +6,7 @@ const Pomodoro = () => {
     const [isRunning, setIsRunning] = useState(false);
     const [mode, setMode] = useState("pomodoro");
     const [activeButton, setActiveButton] = useState("");
+    const [totalTime, setTotalTime] = useState(25 * 60);
 
     useEffect(() => {
         if (!isRunning) return;
@@ -24,6 +25,16 @@ const Pomodoro = () => {
         return () => clearInterval(timer);
     }, [isRunning, minutes, seconds]);
 
+    const currentTime = minutes * 60 + seconds;
+
+    const progress = currentTime / totalTime;
+
+    const radius = 120;
+
+    const circumference = 2 * Math.PI * radius;
+
+    const strokeDashoffset = circumference - progress * circumference;
+
   return (
     <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8">
 
@@ -31,15 +42,50 @@ const Pomodoro = () => {
         🍅 Pomodoro Timer
       </h2>
 
-      <div className="text-center mt-10">
+      <div className="relative w-[300px] h-[300px] mx-auto mt-10">
 
-        <h1 className="text-6xl text-white font-light">
-            {minutes}:
-            {seconds < 10
-                ? `0${seconds}`
-                : seconds}
-            </h1>
-      </div>
+            <svg
+                className="absolute inset-0"
+                width="300"
+                height="300"
+            >
+
+                <circle
+                cx="150"
+                cy="150"
+                r={radius}
+                stroke="#27272a"
+                strokeWidth="8"
+                fill="none"
+                />
+
+                <circle
+                cx="150"
+                cy="150"
+                r={radius}
+                stroke="#f97316"
+                strokeWidth="8"
+                fill="none"
+                strokeLinecap="round"
+                strokeDasharray={circumference}
+                strokeDashoffset={strokeDashoffset}
+                transform="rotate(-90 150 150)"
+                />
+
+            </svg>
+
+            <div className="absolute inset-0 flex items-center justify-center">
+
+                <h1 className="text-6xl text-white font-light">
+                {minutes}:
+                {seconds < 10
+                    ? `0${seconds}`
+                    : seconds}
+                </h1>
+
+            </div>
+
+        </div>
 
       <div className="flex justify-center gap-4 mt-10">
 
@@ -107,6 +153,7 @@ const Pomodoro = () => {
                 setMinutes(25);
                 setSeconds(0);
                 setIsRunning(false);
+                setTotalTime(25*60);
                 }}
                 className="bg-zinc-800 text-white px-6 py-3 rounded-xl"
             >
@@ -119,6 +166,7 @@ const Pomodoro = () => {
                 setMinutes(5);
                 setSeconds(0);
                 setIsRunning(false);
+                setTotalTime(5*60);
                 }}
                 className={`px-6 py-3 rounded-xl ${
                     mode === "short"
@@ -135,6 +183,7 @@ const Pomodoro = () => {
                 setMinutes(15);
                 setSeconds(0);
                 setIsRunning(false);
+                setTotalTime(15*60);
                 }}
                 className={`px-6 py-3 rounded-xl ${
                     mode === "long"
