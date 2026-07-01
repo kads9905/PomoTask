@@ -1,16 +1,140 @@
-# React + Vite
+# PomoTask
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+PomoTask is a modern productivity application that combines task management with the Pomodoro Technique to help users stay organized and focused. It enables users to manage daily tasks efficiently while improving productivity through structured work and break sessions.
 
-Currently, two official plugins are available:
+Built with **React**, **Vite**, **Tailwind CSS**, and **JSON Server**, the application features a clean, responsive interface and persistent task storage.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
+## Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### Task Management
+- Create, edit, and delete tasks
+- Mark tasks as completed or pending
+- Assign due dates and priority levels
+- Track completed tasks with a live progress summary
 
-## Expanding the ESLint configuration
+### Search & Filtering
+- Search tasks instantly by title
+- Filter tasks by:
+  - All
+  - Pending
+  - Completed
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Pomodoro Timer
+- 25-minute focus sessions
+- 5-minute short breaks
+- 15-minute long breaks
+- Start, pause, and reset controls
+- Circular progress indicator
+
+### User Experience
+- Responsive design
+- Clean and modern UI
+- Smooth animations and hover effects
+- Loading and error handling
+- Persistent task data using JSON Server
+
+---
+
+## Tech Stack
+
+| Category | Technology |
+|----------|------------|
+| Frontend | React, JavaScript |
+| Styling | Tailwind CSS |
+| Build Tool | Vite |
+| Backend | JSON Server |
+| State Management | React Hooks (`useState`, `useEffect`) |
+
+---
+
+## Project Structure
+
+```text
+PomoTask
+│
+├── public/
+├── src/
+│   ├── components/
+│   ├── App.jsx
+│   ├── main.jsx
+│   └── index.css
+│
+├── db.json
+├── package.json
+└── README.md
+```
+
+---
+
+## Getting Started
+
+### Clone the repository
+
+```bash
+git clone https://github.com/<your-username>/pomotask.git
+```
+
+### Install dependencies
+
+```bash
+npm install
+```
+
+### Start the frontend
+
+```bash
+npm run dev
+```
+
+### Start the backend
+
+```bash
+npm run server
+```
+
+The application will be available at:
+
+- Frontend: `http://localhost:5173`
+- Backend: `http://localhost:3001`
+
+---
+
+## Screenshots
+
+| Dashboard |
+|-----------|
+| ![Dashboard](screenshots/dashboard.png) |
+
+| Task Management | Pomodoro Timer |
+|-----------------|----------------|
+| ![Tasks](screenshots/tasks.png) | ![Pomodoro](screenshots/pomodoro.png) |
+
+---
+
+## Future Improvements
+
+- User authentication
+- Drag and drop task ordering
+- Task categories and labels
+- Notifications and reminders
+- Cloud database integration
+
+---
+
+## Learning Outcomes
+
+This project helped strengthen my understanding of:
+
+- Building reusable React components
+- State management with React Hooks
+- CRUD operations and REST API integration
+- Responsive UI design with Tailwind CSS
+- Component-based application architecture
+
+---
+
+## License
+
+This project is licensed under the MIT License.
