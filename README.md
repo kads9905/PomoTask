@@ -101,18 +101,6 @@ The application will be available at:
 
 ---
 
-## Screenshots
-
-| Dashboard |
-|-----------|
-| ![Dashboard](screenshots/dashboard.png) |
-
-| Task Management | Pomodoro Timer |
-|-----------------|----------------|
-| ![Tasks](screenshots/tasks.png) | ![Pomodoro](screenshots/pomodoro.png) |
-
----
-
 ## Learning Outcomes
 
 This project helped strengthen my understanding of:
