@@ -20,20 +20,6 @@
       "date": "",
       "priority": "Medium",
       "completed": false
-    },
-    {
-      "id": "Zxdt1hg2OFs",
-      "title": "ggg",
-      "date": "",
-      "priority": "Medium",
-      "completed": false
-    },
-    {
-      "id": "aN019cXa4ds",
-      "title": "ggg",
-      "date": "",
-      "priority": "Medium",
-      "completed": false
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

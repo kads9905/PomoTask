@@ -113,16 +113,6 @@ The application will be available at:
 
 ---
 
-## Future Improvements
-
-- User authentication
-- Drag and drop task ordering
-- Task categories and labels
-- Notifications and reminders
-- Cloud database integration
-
----
-
 ## Learning Outcomes
 
 This project helped strengthen my understanding of:
